@@ -1,0 +1,74 @@
+{
+  "prompt": "Summarize all documents and extract key information regarding coputer organization and architecture",
+  "total_files": 5,
+  "processed": 5,
+  "failed": 0,
+  "model_used": "llama3",
+  "files": [
+    {
+      "filename": "ARM.pdf",
+      "filepath": "C:\\Users\\Parth Thussoo\\Downloads\\Sem-4\\Sem-4\\Computer Organization and Architecture\\ARM.pdf",
+      "file_type": ".pdf",
+      "file_size_kb": 849.89,
+      "data_summary": "",
+      "key_points": [],
+      "entities": "",
+      "word_count": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "filename": "cpu-structure-and-function.pdf",
+      "filepath": "C:\\Users\\Parth Thussoo\\Downloads\\Sem-4\\Sem-4\\Computer Organization and Architecture\\cpu-structure-and-function.pdf",
+      "file_type": ".pdf",
+      "file_size_kb": 421.2,
+      "data_summary": "",
+      "key_points": [],
+      "entities": "",
+      "word_count": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "filename": "Data flow and instruction cycle.pdf",
+      "filepath": "C:\\Users\\Parth Thussoo\\Downloads\\Sem-4\\Sem-4\\Computer Organization and Architecture\\Data flow and instruction cycle.pdf",
+      "file_type": ".pdf",
+      "file_size_kb": 125.19,
+      "data_summary": "",
+      "key_points": [],
+      "entities": "",
+      "word_count": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "filename": "Pipelining.pdf",
+      "filepath": "C:\\Users\\Parth Thussoo\\Downloads\\Sem-4\\Sem-4\\Computer Organization and Architecture\\Pipelining.pdf",
+      "file_type": ".pdf",
+      "file_size_kb": 1188.68,
+      "data_summary": "",
+      "key_points": [],
+      "entities": "",
+      "word_count": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "filename": "Syllabus.png",
+      "filepath": "C:\\Users\\Parth Thussoo\\Downloads\\Sem-4\\Sem-4\\Computer Organization and Architecture\\Syllabus.png",
+      "file_type": ".png",
+      "file_size_kb": 324.58,
+      "data_summary": "",
+      "key_points": [],
+      "entities": "",
+      "word_count": 0,
+      "success": true,
+      "error": null
+    }
+  ],
+  "global_summary": {
+    "global_summary": "",
+    "common_themes": [],
+    "top_insights": []
+  }
+}
