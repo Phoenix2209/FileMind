@@ -7,7 +7,6 @@ from __future__ import annotations
 import base64
 import csv
 import json
-import os
 from pathlib import Path
 from typing import Optional
 
@@ -28,7 +27,7 @@ class FileReadResult:
         file_type:    str,
         file_size_kb: float,
         text:         str = "",
-        image_b64:    Optional[str] = None,   # set for JPEG/PNG
+        image_b64:    Optional[str] = None,
         is_image:     bool = False,
         error:        Optional[str] = None,
     ):
@@ -69,7 +68,7 @@ def read_file(path: Path) -> FileReadResult:
             return _read_json(path, **meta)
         elif ext == ".pdf":
             return _read_pdf(path, **meta)
-        else:                               # .txt .md .log
+        else:
             return _read_text(path, **meta)
     except Exception as exc:
         return FileReadResult(**meta, error=str(exc))
@@ -78,13 +77,21 @@ def read_file(path: Path) -> FileReadResult:
 def discover_files(folder: Path, recursive: bool = False) -> list[Path]:
     """
     Walk a directory and return all supported files.
-    If recursive=True, descends into sub-folders.
+    Uses a seen-paths set to guarantee no file is returned twice.
     """
     pattern = "**/*" if recursive else "*"
-    found = []
+    seen: set[Path] = set()
+    found: list[Path] = []
+
     for p in sorted(folder.glob(pattern)):
+        # resolve() converts to absolute path, eliminating any duplicates
+        # caused by symlinks or overlapping glob patterns
+        resolved = p.resolve()
         if p.is_file() and p.suffix.lower() in SUPPORTED_EXTENSIONS:
-            found.append(p)
+            if resolved not in seen:
+                seen.add(resolved)
+                found.append(p)
+
     return found
 
 
@@ -102,7 +109,7 @@ def _read_csv(path: Path, **meta) -> FileReadResult:
         reader = csv.reader(fh, delimiter=delimiter)
         for i, row in enumerate(reader):
             lines.append(" | ".join(row))
-            if i >= 500:          # cap rows fed to LLM
+            if i >= 500:
                 lines.append("... (truncated at 500 rows)")
                 break
     return FileReadResult(text=_truncate("\n".join(lines)), **meta)
@@ -111,7 +118,6 @@ def _read_csv(path: Path, **meta) -> FileReadResult:
 def _read_json(path: Path, **meta) -> FileReadResult:
     raw = path.read_text(encoding="utf-8", errors="replace")
     if meta["file_type"] == ".jsonl":
-        # each line is a JSON object
         objects = []
         for line in raw.splitlines()[:200]:
             line = line.strip()
@@ -126,14 +132,14 @@ def _read_json(path: Path, **meta) -> FileReadResult:
             parsed = json.loads(raw)
             text = json.dumps(parsed, indent=2)
         except json.JSONDecodeError:
-            text = raw          # pass raw if malformed
+            text = raw
     return FileReadResult(text=_truncate(text), **meta)
 
 
 def _read_pdf(path: Path, **meta) -> FileReadResult:
     """
     Extracts text from every page of a PDF using PyMuPDF.
-    Handles scanned PDFs gracefully — returns whatever text is embedded.
+    Handles scanned PDFs gracefully.
     """
     doc = fitz.open(str(path))
     pages_text = []
@@ -146,7 +152,6 @@ def _read_pdf(path: Path, **meta) -> FileReadResult:
     doc.close()
 
     if not pages_text:
-        # PDF exists but has no extractable text (e.g. scanned image-only PDF)
         return FileReadResult(
             **meta,
             error="PDF has no extractable text. It may be a scanned image-only PDF."
