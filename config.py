@@ -6,24 +6,24 @@ from pathlib import Path
 
 # ── Ollama (offline LLM) ───────────────────────────────────────────────────
 OLLAMA_BASE_URL: str = "http://localhost:11434"   # default Ollama port
-OLLAMA_MODEL:    str = "llama3"                   # change to: mistral, phi3, gemma, etc.
-OLLAMA_TIMEOUT:  int = 120                        # seconds per LLM call
+OLLAMA_MODEL:    str = "gemma3:4b"                # change to: llama3, mistral, phi3 etc
+OLLAMA_TIMEOUT:  int = 300                        # seconds per LLM call
 
 # ── Vision model (for JPEG/image files) ───────────────────────────────────
 # Must be a multimodal model you have pulled, e.g. "llava", "llava-phi3"
-OLLAMA_VISION_MODEL: str = "llava"
+OLLAMA_VISION_MODEL: str = "gemma3:4b"            # change to llava once pulled
 
 # ── File handling ──────────────────────────────────────────────────────────
 SUPPORTED_EXTENSIONS: set[str] = {
     ".txt", ".md", ".log",          # plain text
     ".csv", ".tsv",                  # tabular
     ".json", ".jsonl",               # structured
-    ".jpeg", ".jpg", ".png",        # images (vision model)
-    ".pdf",        
+    ".jpeg", ".jpg", ".png",         # images (vision model)
+    ".pdf",                          # PDF documents
 }
 
 # Max characters read from a single text file before truncating
-MAX_CHARS_PER_FILE: int = 12_000
+MAX_CHARS_PER_FILE: int = 6_000
 
 # ── Output ─────────────────────────────────────────────────────────────────
 OUTPUT_DIR: Path = Path("output")   # summary JSON saved here
@@ -48,17 +48,14 @@ Respond ONLY with valid JSON — no markdown, no explanation — using this exac
 """
 
 GLOBAL_SUMMARY_PROMPT = """\
-You are a data analyst. Below are per-file summaries from {n} files.
-Write a unified global summary (3-5 sentences) covering the main findings across ALL files.
-Also list up to 5 common themes and up to 5 top insights.
+You are a data analyst. Here are summaries from {n} files:
 
-Respond ONLY with valid JSON:
-{
-  "global_summary": "string",
-  "common_themes": ["string", ...],
-  "top_insights": ["string", ...]
-}
-
-Per-file data:
 {summaries}
+
+Respond ONLY with valid JSON, nothing else:
+{{
+  "global_summary": "Write a detailed 6-8 sentence summary covering all files, main findings, patterns, and conclusions.",
+  "common_themes": ["theme1", "theme2"],
+  "top_insights": ["insight1", "insight2"]
+}}
 """

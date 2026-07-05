@@ -1,16 +1,16 @@
 {
-  "prompt": "Summarize all documents and extract key information regarding coputer organization and architecture",
+  "prompt": "Summarize all documents and extract key information.",
   "total_files": 5,
   "processed": 5,
   "failed": 0,
   "model_used": "llama3",
   "files": [
     {
-      "filename": "ARM.pdf",
-      "filepath": "C:\\Users\\Parth Thussoo\\Downloads\\Sem-4\\Sem-4\\Computer Organization and Architecture\\ARM.pdf",
+      "filename": "MCQ Constitution of India.pdf",
+      "filepath": "C:\\Users\\Parth Thussoo\\Downloads\\Sem-4\\Sem-4\\Constitution of India\\MCQ Constitution of India.pdf",
       "file_type": ".pdf",
-      "file_size_kb": 849.89,
-      "data_summary": "",
+      "file_size_kb": 4850.96,
+      "data_summary": "The file contains a series of blank pages scanned using CamScanner.",
       "key_points": [],
       "entities": "",
       "word_count": 0,
@@ -18,11 +18,11 @@
       "error": null
     },
     {
-      "filename": "cpu-structure-and-function.pdf",
-      "filepath": "C:\\Users\\Parth Thussoo\\Downloads\\Sem-4\\Sem-4\\Computer Organization and Architecture\\cpu-structure-and-function.pdf",
+      "filename": "prefinal 1 Constitution of India-1.pdf",
+      "filepath": "C:\\Users\\Parth Thussoo\\Downloads\\Sem-4\\Sem-4\\Constitution of India\\prefinal 1 Constitution of India-1.pdf",
       "file_type": ".pdf",
-      "file_size_kb": 421.2,
-      "data_summary": "",
+      "file_size_kb": 8707.74,
+      "data_summary": "The file contains a series of blank pages with the CamScanner logo.",
       "key_points": [],
       "entities": "",
       "word_count": 0,
@@ -30,35 +30,38 @@
       "error": null
     },
     {
-      "filename": "Data flow and instruction cycle.pdf",
-      "filepath": "C:\\Users\\Parth Thussoo\\Downloads\\Sem-4\\Sem-4\\Computer Organization and Architecture\\Data flow and instruction cycle.pdf",
-      "file_type": ".pdf",
-      "file_size_kb": 125.19,
-      "data_summary": "",
-      "key_points": [],
-      "entities": "",
-      "word_count": 0,
-      "success": true,
-      "error": null
-    },
-    {
-      "filename": "Pipelining.pdf",
-      "filepath": "C:\\Users\\Parth Thussoo\\Downloads\\Sem-4\\Sem-4\\Computer Organization and Architecture\\Pipelining.pdf",
-      "file_type": ".pdf",
-      "file_size_kb": 1188.68,
-      "data_summary": "",
-      "key_points": [],
-      "entities": "",
-      "word_count": 0,
-      "success": true,
-      "error": null
-    },
-    {
-      "filename": "Syllabus.png",
-      "filepath": "C:\\Users\\Parth Thussoo\\Downloads\\Sem-4\\Sem-4\\Computer Organization and Architecture\\Syllabus.png",
+      "filename": "Screenshot 2025-01-07 184655.png",
+      "filepath": "C:\\Users\\Parth Thussoo\\Downloads\\Sem-4\\Sem-4\\Constitution of India\\Screenshot 2025-01-07 184655.png",
       "file_type": ".png",
-      "file_size_kb": 324.58,
+      "file_size_kb": 344.86,
+      "data_summary": "The image contains a document with text, which seems to be related to an examination or test in India. The document includes a title, a subtitle, and some body text. It also has a table with numerical values and descriptions of the items being evaluated.",
+      "key_points": [
+        "The document is about an examination in India.",
+        "There are numerical values and descriptions of the items being evaluated."
+      ],
+      "entities": "India, examination",
+      "word_count": 10,
+      "success": true,
+      "error": null
+    },
+    {
+      "filename": "Screenshot 2025-01-07 184705.png",
+      "filepath": "C:\\Users\\Parth Thussoo\\Downloads\\Sem-4\\Sem-4\\Constitution of India\\Screenshot 2025-01-07 184705.png",
+      "file_type": ".png",
+      "file_size_kb": 145.06,
       "data_summary": "",
+      "key_points": [],
+      "entities": "",
+      "word_count": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "filename": "syllb and notes.pdf",
+      "filepath": "C:\\Users\\Parth Thussoo\\Downloads\\Sem-4\\Sem-4\\Constitution of India\\syllb and notes.pdf",
+      "file_type": ".pdf",
+      "file_size_kb": 6738.71,
+      "data_summary": "The file contains a series of blank pages scanned using CamScanner.",
       "key_points": [],
       "entities": "",
       "word_count": 0,
